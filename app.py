@@ -44,3 +44,15 @@ if prediction == 1:
     st.success("✅ This passenger would have SURVIVED!")
 else:
     st.error("❌ This passenger would NOT have survived.")
+
+import os
+import joblib
+
+# Check if the model file exists before loading
+model_path = "titanic_survival_model.pkl"
+
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file not found: {model_path}")
+
+model = joblib.load(model_path)  # Load the model only if it exists
+
